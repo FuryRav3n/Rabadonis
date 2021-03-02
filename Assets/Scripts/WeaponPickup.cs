@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponPickup : MonoBehaviour
 {
-    [SerializeField]
-    private Text pickUpText;
+    public Text pickUpText;
 
     public GameObject Player;
 
@@ -17,7 +16,6 @@ public class WeaponPickup : MonoBehaviour
     public GameObject gun;
 
     private bool pickUpAllowed;
-
     
     void Start()
     {
@@ -29,7 +27,11 @@ public class WeaponPickup : MonoBehaviour
     void Update()
     {
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.R))
+        {
             pickUp();
+            music.Play();
+            loopmusic.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,10 +54,8 @@ public class WeaponPickup : MonoBehaviour
 
     private void pickUp()
     {
-            gun.gameObject.transform.position = Player.transform.position;
-            gun.gameObject.transform.parent = Player.transform;
-            music.Play();
-        loopmusic.Stop();
+        gun.gameObject.transform.position = new Vector3(Player.transform.position.x + 1, Player.transform.position.y);
+        gun.gameObject.transform.parent = Player.transform;
     }
 }
 
