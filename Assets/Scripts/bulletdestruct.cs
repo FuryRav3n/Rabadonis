@@ -8,7 +8,7 @@ public class bulletdestruct : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject ef = Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(ef, 2f);
+        Destroy(ef, 1f);
         Destroy(gameObject);
     }
 }
