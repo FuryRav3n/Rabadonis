@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7decf71d60cb2fe438b4d9a0a160a517, type: 3}
+  m_Name: SceneLoaderManager
+  m_EditorClassIdentifier: 
+  List:
+    array:
+    - SceneName: DemoTilemap
+      SceneAsset: {fileID: 102900000, guid: 0adac361199fad348b8b9f90bd6817f8, type: 3}
+      DisplayName: DemoTilemap
+      Description: 
+      SkipType: 4
+      LoadingType: 0
+      FakeLoadingTime: 3
+      Backgrounds: []
+    - SceneName: MainMenu
+      SceneAsset: {fileID: 102900000, guid: 265e66825fb06f04996328327129e819, type: 3}
+      DisplayName: MainMenu
+      Description: 
+      SkipType: 4
+      LoadingType: 0
+      FakeLoadingTime: 2
+      Backgrounds: []
+  TipList:
+    array:
+    - In order to survive kill enemies!
+    - You get points after killing enemy
+    - points are used to get power ups!
+    - You hold your gun with power of your mind

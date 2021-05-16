@@ -7,6 +7,7 @@ public class bulletscript : MonoBehaviour
     public GameObject projectile;
     public GameObject holder;
     public float speed = 10f;
+    public AudioSource shot;
 
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class bulletscript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                shot.Play();
                 GameObject p = Instantiate(projectile, transform.position, transform.rotation);
                 p.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
             }

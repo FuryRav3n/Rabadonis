@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Runtime.InteropServices;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public Text pickUpText;
+    public TMP_Text pickUpText;
 
     public GameObject Player;
+
+    public Rigidbody2D rbpl;
 
     public AudioSource music;
 
@@ -16,7 +20,11 @@ public class WeaponPickup : MonoBehaviour
     public GameObject gun;
 
     private bool pickUpAllowed;
-    
+
+
+    [DllImport("user32.dll")]
+    static extern bool SetCursorPos(int X, int Y);
+
     void Start()
     {
         pickUpText.gameObject.SetActive(false);
@@ -38,6 +46,9 @@ public class WeaponPickup : MonoBehaviour
     {
         if(collision.gameObject.name.Equals("Pistacio"))
         {
+            //int xPos = (int)rbpl.position.x -50;
+            //int yPos = (int)rbpl.position.y -50;
+            //SetCursorPos(xPos, yPos);
             pickUpText.gameObject.SetActive(true);
             pickUpAllowed = true;
         }

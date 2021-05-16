@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeControl : MonoBehaviour
 {
     public float timeRemaining;
     public float timerMax;
     public Slider slider;
+    public GameObject gun;
+
 
 
     private void Start()
@@ -17,14 +20,18 @@ public class TimeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value = CalculateSV();
-        if (timeRemaining <= 0)
+        if (gun.transform.parent != null)
         {
-            timeRemaining = 0;
-        }
-        else if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
+            slider.value = CalculateSV();
+            if (timeRemaining <= 0)
+            {
+                timeRemaining = 0;
+                SceneManager.LoadScene(2);
+            }
+            else if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
         }
     }
 
