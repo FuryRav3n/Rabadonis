@@ -11,8 +11,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+
     public Animator animator;
 
+    void Start()
+    {
+        PlayerPrefs.SetFloat("Speed", 3);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,11 +28,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-        
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * PlayerPrefs.GetFloat("Speed") * Time.fixedDeltaTime);
     }
 }

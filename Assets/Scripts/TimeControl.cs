@@ -10,7 +10,8 @@ public class TimeControl : MonoBehaviour
     public float timerMax;
     public Slider slider;
     public GameObject gun;
-
+    public Animator animator;
+    public AudioSource dead;
 
 
     private void Start()
@@ -26,7 +27,8 @@ public class TimeControl : MonoBehaviour
             if (timeRemaining <= 0)
             {
                 timeRemaining = 0;
-                SceneManager.LoadScene(2);
+                dead.Play();
+                StartCoroutine(DoAnimation());
             }
             else if (timeRemaining > 0)
             {
@@ -38,5 +40,12 @@ public class TimeControl : MonoBehaviour
     float CalculateSV()
     {
         return timeRemaining / timerMax;
+    }
+
+    IEnumerator DoAnimation()
+    {
+        animator.Play("Base Layer.deathanim");
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(2);
     }
 }
