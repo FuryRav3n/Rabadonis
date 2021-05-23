@@ -15,11 +15,17 @@ public class bulletscript : MonoBehaviour
     {
         if (transform.IsChildOf(holder.transform))
         {
+            
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 shot.Play();
                 GameObject p = Instantiate(projectile, transform.position, transform.rotation);
                 p.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+                if(PlayerPrefs.GetInt("DoubleShotAc") == 1)
+                {
+                    GameObject k = Instantiate(projectile, transform.position, transform.rotation);
+                    k.GetComponent<Rigidbody2D>().velocity = transform.right * (speed-3f);
+                }
             }
         }
     }

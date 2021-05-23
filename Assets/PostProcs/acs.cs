@@ -6,13 +6,6 @@ using UnityEngine.Rendering.PostProcessing;
 public class acs : MonoBehaviour
 {
     public PostProcessVolume vol;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //vol.profile.TryGetSettings<Bloom>(out var bloom);
-        //bloom.intensity.Override(50f);
-        //vol.profile.TryGetSettings<Vignette>(out var vignette);
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,7 +15,7 @@ public class acs : MonoBehaviour
         float timeMax = t.timerMax;
         timeT -= Time.deltaTime;
         vol.profile.TryGetSettings<Vignette>(out var vignette);
-        vignette.intensity.Override(timeT / timeMax);
+        vignette.intensity.Override(1 - (timeT / timeMax));
 
     }
 }

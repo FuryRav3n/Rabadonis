@@ -5,7 +5,6 @@ using UnityEngine;
 public class testcameracontrol : MonoBehaviour
 {
     private Transform gunp;
-
     private void Awake()
     {
         gunp = transform.Find("Weaponholder");

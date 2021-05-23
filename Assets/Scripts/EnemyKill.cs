@@ -10,25 +10,40 @@ public class EnemyKill : MonoBehaviour
     public Animator death;
     public AudioSource deathSound;
     public AudioSource tookDmg;
-    public PostProcessVolume vol;
+    int health = 2;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
-            Score.score += 10;
-            TimeControl t = GameObject.FindWithTag("timebar").GetComponent<TimeControl>();
-            t.timeRemaining = t.timeRemaining + 1f;
-            this.GetComponent<Pathfinding.AIPath>().enabled = false;
-            death.Play("Base Layer.Dead");
-            deathSound.Play();
-            Destroy(gameObject, 1f);
+            if(PlayerPrefs.GetString("Difficulty") == "Hard")
+            {
+                health = health - 1;
+                if(health == 0)
+                {
+                    Score.score += 10;
+                    TimeControl ti = GameObject.FindWithTag("timebar").GetComponent<TimeControl>();
+                    ti.timeRemaining = ti.timeRemaining + 1f;
+                    this.GetComponent<Pathfinding.AIPath>().enabled = false;
+                    death.Play("Base Layer.Dead");
+                    deathSound.Play();
+                    Destroy(gameObject, 1f);
+                }
+            }
+            else
+            {
+                Score.score += 10;
+                TimeControl t = GameObject.FindWithTag("timebar").GetComponent<TimeControl>();
+                t.timeRemaining = t.timeRemaining + 1f;
+                this.GetComponent<Pathfinding.AIPath>().enabled = false;
+                death.Play("Base Layer.Dead");
+                deathSound.Play();
+                Destroy(gameObject, 1f);
+            }
         }
         if (collision.gameObject.tag.Equals("pl"))
         {
             TimeControl t = GameObject.FindWithTag("timebar").GetComponent<TimeControl>();
             t.timeRemaining = t.timeRemaining - 5f;
-            vol.profile.TryGetSettings<Bloom>(out var bloom);
-            bloom.intensity.Override(50f);
             tookDmg.Play();
             this.GetComponent<Pathfinding.AIPath>().enabled = false;
             death.Play("Base Layer.Dead");
