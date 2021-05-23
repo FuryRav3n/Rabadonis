@@ -30,6 +30,14 @@ MonoBehaviour:
       LoadingType: 0
       FakeLoadingTime: 2
       Backgrounds: []
+    - SceneName: GameOVer
+      SceneAsset: {fileID: 102900000, guid: 2d0df9e6d1fdd3f4f896e3360bc21c6a, type: 3}
+      DisplayName: GameOVer
+      Description: 
+      SkipType: 3
+      LoadingType: 0
+      FakeLoadingTime: 2
+      Backgrounds: []
   TipList:
     array:
     - In order to survive kill enemies!
