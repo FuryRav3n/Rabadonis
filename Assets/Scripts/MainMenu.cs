@@ -12,9 +12,7 @@ public class MainMenu : MonoBehaviour
     int eas = 0;
     private void Start()
     {
-        //PlayerPrefs.SetInt("UnlockedHard", 0);
-        //PlayerPrefs.SetInt("UnlockedAbility", 0);
-        //PlayerPrefs.SetString("Difficulty", "Easy");
+        PlayerPrefs.SetInt("DoubleShotAc", 0);
         if (PlayerPrefs.GetInt("UnlockedHard") == 1)
         {
             mode.gameObject.SetActive(true);
@@ -42,6 +40,16 @@ public class MainMenu : MonoBehaviour
             modedif.text = "Hard";
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            PlayerPrefs.SetInt("UnlockedHard", 0);
+            PlayerPrefs.SetInt("UnlockedAbility", 0);
+            PlayerPrefs.SetString("Difficulty", "Easy");
+        }
+    }
     public void play()
     {
         Score.score = 0;
@@ -64,5 +72,13 @@ public class MainMenu : MonoBehaviour
             modedif.text = "Easy";
             PlayerPrefs.SetString("Difficulty", "Easy");
         }
+    }
+
+    public void resetprogress()
+    {
+        PlayerPrefs.SetInt("UnlockedHard", 0);
+        PlayerPrefs.SetInt("UnlockedAbility", 0);
+        PlayerPrefs.SetString("Difficulty", "Easy");
+        PlayerPrefs.SetInt("DoubleShotAc", 0);
     }
 }

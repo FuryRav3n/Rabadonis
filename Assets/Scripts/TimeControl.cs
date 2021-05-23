@@ -21,6 +21,10 @@ public class TimeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            timeRemaining = 1;
+        }
         if (gun.transform.parent != null)
         {
             slider.value = CalculateSV();
